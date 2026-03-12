@@ -6,6 +6,9 @@ import { cn } from "@/lib/utils";
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 export const metadata: Metadata = {
+  // 1. TAMBAHIN INI BIAR NEXT.JS TAU DOMAIN ASLI LU
+  metadataBase: new URL('https://gshiki.my.id'), 
+  
   title: "Shiki — Link in Bio",
   description: "Developer & Creator · Building the future, one line of code at a time.",
   icons: {
@@ -18,7 +21,7 @@ export const metadata: Metadata = {
     siteName: "Shiki Main Lobby",
     images: [
       {
-        url: "/og-main.png",
+        url: "https://gshiki.my.id/og-main.png", 
         width: 1200,
         height: 630,
         alt: "Shiki - Main Lobby",
@@ -31,7 +34,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Shiki — Link in Bio",
     description: "Developer & Creator · Building the future, one line of code at a time.",
-    images: ["/og-main.png"],
+    images: ["https://gshiki.my.id/og-main.png"], 
   },
 };
 
