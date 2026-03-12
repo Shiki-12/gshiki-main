@@ -14,7 +14,7 @@ const stagger = {
     opacity: 1,
     transition: { staggerChildren: 0.1, delayChildren: 0.4 },
   },
-};
+} as const;
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24, filter: "blur(6px)" },
@@ -22,9 +22,9 @@ const fadeUp = {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
-    transition: { duration: 0.55, ease: "easeOut" },
+    transition: { duration: 0.55, ease: "easeOut" as const },
   },
-};
+} as const;
 
 const scalePop = {
   hidden: { opacity: 0, scale: 0.85 },
@@ -33,7 +33,7 @@ const scalePop = {
     scale: 1,
     transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const },
   },
-};
+} as const;
 
 /* ── Link Data ── */
 const links = [
