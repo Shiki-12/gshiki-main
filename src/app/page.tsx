@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { Briefcase, Instagram, Facebook, Gamepad2 } from "lucide-react";
+import { Briefcase, Instagram, Facebook, Gamepad2, Github } from "lucide-react";
 import AnimatedShaderBackground from "@/components/ui/animated-shader-background";
 import { LiquidButton } from "@/components/ui/liquid-glass-button";
 
@@ -44,20 +44,26 @@ const links = [
     external: false,
   },
   {
+    label: "Github",
+    href: "https://github.com/Shiki-12",
+    icon: Github,
+    external: true,
+  },
+  {
     label: "Instagram",
-    href: "#",
+    href: "https://www.instagram.com/tar_ajasih",
     icon: Instagram,
     external: true,
   },
   {
     label: "Facebook",
-    href: "#",
+    href: "https://www.facebook.com/Shikii21",
     icon: Facebook,
     external: true,
   },
   {
     label: "Steam",
-    href: "#",
+    href: "https://steamcommunity.com/id/Kurisu-21",
     icon: Gamepad2,
     external: true,
   },
@@ -136,7 +142,7 @@ export default function Home() {
         ════════════════════════════════════ */}
         <motion.div
           variants={fadeUp}
-          className="grid grid-cols-2 sm:grid-cols-4 gap-3 w-full"
+          className="grid grid-cols-2 sm:grid-cols-5 gap-3 w-full"
         >
           {links.map((link) => {
             const Icon = link.icon;
