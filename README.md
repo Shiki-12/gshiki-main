@@ -1,15 +1,15 @@
-# Shiki | Main Website 🌌
+# Shiki | Main Website 
 
 This is the main lobby/root landing page for my domain. It serves as a personal "link-in-bio" hub to connect visitors to my portfolio, socials, and other projects.
 
-## 🎨 Design & Aesthetic
+## Design & Aesthetic
 
 The site is built with a deep-tech, cyberpunk aesthetic designed to make a stunning first impression:
 - **Dynamic Background:** A mesmerizing, physics-based WebGL Aurora Shader (Three.js) running in real-time.
 - **Glassmorphism UI:** Floating, semi-transparent "Liquid Glass" buttons that react to hover states with SVG displacement filters.
 - **Typography:** Bold, gradient-filled typography (`Orbitron` & `Inter`) with neon drop-shadows.
 
-## 💻 Tech Stack
+## Tech Stack
 
 - **Framework:** [Next.js (App Router)](https://nextjs.org/)
 - **Language:** TypeScript
@@ -19,7 +19,7 @@ The site is built with a deep-tech, cyberpunk aesthetic designed to make a stunn
 - **UI Components:** Built on [shadcn/ui](https://ui.shadcn.com/) architecture
 - **Icons:** [Lucide React](https://lucide.dev/)
 
-## 🚀 Getting Started
+## Getting Started
 
 First, install the dependencies:
 
@@ -35,7 +35,7 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## 🔗 Link Structure
+## Link Structure
 
 The bento-grid currently routes to:
 - **Portfolio:** `/portofolio` (Internal Next.js route)
