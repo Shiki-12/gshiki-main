@@ -6,11 +6,32 @@ import { cn } from "@/lib/utils";
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 export const metadata: Metadata = {
-  title: "Shiki | Links",
-  description:
-    "Personal link hub for Shiki — developer, creator, and tech enthusiast.",
+  title: "Shiki — Link in Bio",
+  description: "Developer & Creator · Building the future, one line of code at a time.",
   icons: {
-    icon: "/favicon.ico",
+    icon: '/favicon.ico', 
+  },
+  openGraph: {
+    title: "Shiki — Link in Bio",
+    description: "Developer & Creator · Building the future, one line of code at a time.",
+    url: "https://gshiki.my.id",
+    siteName: "Shiki Main Lobby",
+    images: [
+      {
+        url: "/og-main.png",
+        width: 1200,
+        height: 630,
+        alt: "Shiki - Main Lobby",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Shiki — Link in Bio",
+    description: "Developer & Creator · Building the future, one line of code at a time.",
+    images: ["/og-main.png"],
   },
 };
 
