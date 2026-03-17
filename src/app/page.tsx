@@ -127,7 +127,7 @@ export default function Home() {
             <span className="text-zinc-200 font-medium">
               My motto: &nbsp;
             </span>
-            Wanting to be a skilled programmer, but reluctant to code.
+            Aspiring to be a skilled programmer, but too lazy to actually code.
           </motion.p>
         </div>
 
@@ -140,41 +140,44 @@ export default function Home() {
         >
           {links.map((link) => {
             const Icon = link.icon;
-            const ButtonContent = (
-              <LiquidButton
-                size="xxl"
-                className="!h-auto w-full rounded-2xl cursor-pointer"
-              >
-                <span className="flex flex-col items-center justify-center gap-2 py-3">
-                  <Icon className="!size-5 text-zinc-400" strokeWidth={1.5} />
-                  <span
-                    className={`text-[10px] uppercase tracking-[0.15em] font-medium text-zinc-300 ${plusJakarta.className}`}
-                  >
-                    {link.label}
-                  </span>
-                </span>
-              </LiquidButton>
-            );
-
-            if (link.external) {
-              return (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full block hover:opacity-80 transition-opacity"
-                >
-                  {ButtonContent}
-                </a>
-              );
-            }
-
-            // Kalau internal (Portfolio), WAJIB pakai <Link> bawaan Next.js
+            
             return (
-              <Link key={link.label} href={link.href} className="w-full block hover:opacity-80 transition-opacity">
-                {ButtonContent}
-              </Link>
+              // Bungkus pakai div relative
+              <div key={link.label} className="relative w-full group">
+                
+                {/* 1. VISUAL TOMBOLNYA (Ada di layer bawah, efek visual doang) */}
+                <LiquidButton
+                  size="xxl"
+                  className="!h-auto w-full rounded-2xl transition-opacity group-hover:opacity-80"
+                >
+                  <span className="flex flex-col items-center justify-center gap-2 py-3">
+                    <Icon className="!size-5 text-zinc-400" strokeWidth={1.5} />
+                    <span
+                      className={`text-[10px] uppercase tracking-[0.15em] font-medium text-zinc-300 ${plusJakarta.className}`}
+                    >
+                      {link.label}
+                    </span>
+                  </span>
+                </LiquidButton>
+
+                {/* 2. LINK GAIB (Ada di layer atas persis nutupin tombol buat nerima klik/touch) */}
+                {link.external ? (
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="absolute inset-0 z-20 rounded-2xl"
+                    aria-label={`Visit my ${link.label}`}
+                  />
+                ) : (
+                  <Link
+                    href={link.href}
+                    className="absolute inset-0 z-20 rounded-2xl"
+                    aria-label={`Go to ${link.label}`}
+                  />
+                )}
+                
+              </div>
             );
           })}
         </motion.div>
