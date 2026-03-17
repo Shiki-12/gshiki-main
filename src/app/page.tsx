@@ -1,11 +1,18 @@
 "use client";
 
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Briefcase, Instagram, Facebook, Gamepad2, Github } from "lucide-react";
 import AnimatedShaderBackground from "@/components/ui/animated-shader-background";
 import { LiquidButton } from "@/components/ui/liquid-glass-button";
+import { Plus_Jakarta_Sans } from "next/font/google";
+
+const plusJakarta = Plus_Jakarta_Sans({ 
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap"
+});
 
 /* ── Animation Variants ── */
 const stagger = {
@@ -70,16 +77,6 @@ const links = [
 ];
 
 export default function Home() {
-  const router = useRouter();
-
-  const handleClick = (href: string, external: boolean) => {
-    if (external) {
-      window.open(href, "_blank", "noopener,noreferrer");
-    } else {
-      router.push(href);
-    }
-  };
-
   return (
     <main className="relative min-h-dvh flex flex-col items-center justify-center px-5 py-12 overflow-hidden">
       {/* ── Aurora Shader Background ── */}
@@ -90,7 +87,7 @@ export default function Home() {
 
       {/* ── Content Layer ── */}
       <motion.div
-        className="relative z-10 flex flex-col items-center gap-10 w-full max-w-xl"
+        className="relative z-10 flex flex-col items-center gap-14 w-full max-w-xl"
         variants={stagger}
         initial="hidden"
         animate="visible"
@@ -98,10 +95,10 @@ export default function Home() {
         {/* ════════════════════════════════════
             HERO SECTION
         ════════════════════════════════════ */}
-        <div className="flex flex-col items-center gap-5 text-center">
+        <div className="flex flex-col items-center gap-6 text-center">
           {/* Profile Picture */}
           <motion.div variants={scalePop}>
-            <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden ring-2 ring-[#00f0ff]/60 shadow-[0_0_20px_rgba(0,240,255,0.35),0_0_40px_rgba(0,240,255,0.1)]">
+            <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden ring-1 ring-white/10 bg-white/5 backdrop-blur-sm shadow-xl">
               <Image
                 src="/pfp.png"
                 alt="Shiki"
@@ -116,24 +113,21 @@ export default function Home() {
           {/* Name */}
           <motion.h1
             variants={fadeUp}
-            className="text-5xl sm:text-7xl font-black tracking-[0.15em] leading-none"
-            style={{ fontFamily: "var(--font-heading)" }}
+            className={`text-5xl sm:text-7xl font-bold tracking-tight text-white drop-shadow-sm ${plusJakarta.className}`}
           >
-            <span className="bg-gradient-to-r from-[#00f0ff] via-white to-[#ff00e5] bg-clip-text text-transparent drop-shadow-[0_0_25px_rgba(0,240,255,0.5)]">
-              SHIKI
-            </span>
+            Shiki.Dev
           </motion.h1>
 
           {/* Tagline */}
           <motion.p
             variants={fadeUp}
-            className="text-sm sm:text-base text-white/70 max-w-sm leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
+            className={`text-sm sm:text-base text-zinc-400 max-w-sm leading-relaxed ${plusJakarta.className}`}
           >
             Developer &amp; Creator ·{" "}
-            <span className="text-[#00f0ff] font-medium">
-              Building the future
+            <span className="text-zinc-200 font-medium">
+              My motto: &nbsp;
             </span>
-            , one line of code at a time.
+            Wanting to be a skilled programmer, but reluctant to code.
           </motion.p>
         </div>
 
@@ -146,23 +140,41 @@ export default function Home() {
         >
           {links.map((link) => {
             const Icon = link.icon;
-            return (
+            const ButtonContent = (
               <LiquidButton
-                key={link.label}
                 size="xxl"
-                className="!h-auto w-full rounded-2xl"
-                onClick={() => handleClick(link.href, link.external)}
+                className="!h-auto w-full rounded-2xl cursor-pointer"
               >
                 <span className="flex flex-col items-center justify-center gap-2 py-3">
-                  <Icon className="!size-5 text-white/80" strokeWidth={1.5} />
+                  <Icon className="!size-5 text-zinc-400" strokeWidth={1.5} />
                   <span
-                    className="text-xs sm:text-sm font-semibold tracking-wider text-white/90"
-                    style={{ fontFamily: "var(--font-heading)" }}
+                    className={`text-[10px] uppercase tracking-[0.15em] font-medium text-zinc-300 ${plusJakarta.className}`}
                   >
                     {link.label}
                   </span>
                 </span>
               </LiquidButton>
+            );
+
+            if (link.external) {
+              return (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full block hover:opacity-80 transition-opacity"
+                >
+                  {ButtonContent}
+                </a>
+              );
+            }
+
+            // Kalau internal (Portfolio), WAJIB pakai <Link> bawaan Next.js
+            return (
+              <Link key={link.label} href={link.href} className="w-full block hover:opacity-80 transition-opacity">
+                {ButtonContent}
+              </Link>
             );
           })}
         </motion.div>
