@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { Briefcase, Instagram, Facebook, Gamepad2, Github } from "lucide-react";
 import AnimatedShaderBackground from "@/components/ui/animated-shader-background";
@@ -142,13 +141,12 @@ export default function Home() {
             const Icon = link.icon;
             
             return (
-              // Bungkus pakai div relative
               <div key={link.label} className="relative w-full group">
                 
-                {/* 1. VISUAL TOMBOLNYA (Ada di layer bawah, efek visual doang) */}
+                {/* 1. VISUAL TOMBOLNYA */}
                 <LiquidButton
                   size="xxl"
-                  className="!h-auto w-full rounded-2xl transition-opacity group-hover:opacity-80"
+                  className="!h-auto w-full rounded-2xl transition-opacity group-hover:opacity-80 pointer-events-none"
                 >
                   <span className="flex flex-col items-center justify-center gap-2 py-3">
                     <Icon className="!size-5 text-zinc-400" strokeWidth={1.5} />
@@ -160,22 +158,16 @@ export default function Home() {
                   </span>
                 </LiquidButton>
 
-                {/* 2. LINK GAIB (Ada di layer atas persis nutupin tombol buat nerima klik/touch) */}
-                {link.external ? (
-                  <a
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="absolute inset-0 z-20 rounded-2xl"
-                    aria-label={`Visit my ${link.label}`}
-                  />
-                ) : (
-                  <Link
-                    href={link.href}
-                    className="absolute inset-0 z-20 rounded-2xl"
-                    aria-label={`Go to ${link.label}`}
-                  />
-                )}
+                {/* 2. LINK GAIB MURNI (HTML NATIVE) */}
+                <a
+                  href={link.href}
+                  target={link.external ? "_blank" : "_self"}
+                  rel={link.external ? "noopener noreferrer" : undefined}
+                  className="absolute inset-0 z-30 block w-full h-full cursor-pointer"
+                  // Ini script sakti biar layar HP gak ngelag 300ms pas dipencet
+                  style={{ touchAction: "manipulation", WebkitTapHighlightColor: "transparent" }}
+                  aria-label={link.label}
+                />
                 
               </div>
             );
