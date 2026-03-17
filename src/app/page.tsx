@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Briefcase, Instagram, Facebook, Gamepad2, Github } from "lucide-react";
+import { Briefcase, Instagram, Facebook, Gamepad2, Github, Tv } from "lucide-react";
 import AnimatedShaderBackground from "@/components/ui/animated-shader-background";
 import { LiquidButton } from "@/components/ui/liquid-glass-button";
 import { Plus_Jakarta_Sans } from "next/font/google";
@@ -48,6 +48,12 @@ const links = [
     href: "/portofolio",
     icon: Briefcase,
     external: false,
+  },
+  {
+    label: "Nime-Nime",
+    href: "https://nime-nime.web.id",
+    icon: Tv,
+    external: true,
   },
   {
     label: "Github",
@@ -135,7 +141,8 @@ export default function Home() {
         ════════════════════════════════════ */}
         <motion.div
           variants={fadeUp}
-          className="grid grid-cols-2 sm:grid-cols-5 gap-3 w-full"
+          // UBAH GRID DI SINI JADI 3 KOLOM BIAR RAPIH BUAT 6 ITEM
+          className="grid grid-cols-2 sm:grid-cols-3 gap-3 w-full"
         >
           {links.map((link) => {
             const Icon = link.icon;
@@ -164,7 +171,6 @@ export default function Home() {
                   target={link.external ? "_blank" : "_self"}
                   rel={link.external ? "noopener noreferrer" : undefined}
                   className="absolute inset-0 z-30 block w-full h-full cursor-pointer"
-                  // Ini script sakti biar layar HP gak ngelag 300ms pas dipencet
                   style={{ touchAction: "manipulation", WebkitTapHighlightColor: "transparent" }}
                   aria-label={link.label}
                 />

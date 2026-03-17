@@ -6,25 +6,23 @@ import { cn } from "@/lib/utils";
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 export const metadata: Metadata = {
-  // 1. TAMBAHIN INI BIAR NEXT.JS TAU DOMAIN ASLI LU
   metadataBase: new URL('https://gshiki.my.id'), 
-  
-  title: "Shiki — Link in Bio",
+  title: "Shiki — Main Website",
   description: "Developer & Creator · Building the future, one line of code at a time.",
   icons: {
     icon: '/favicon.ico', 
   },
   openGraph: {
-    title: "Shiki — Link in Bio",
+    title: "Shiki — Main Website",
     description: "Developer & Creator · Building the future, one line of code at a time.",
     url: "https://gshiki.my.id",
-    siteName: "Shiki Main Lobby",
+    siteName: "Shiki Main Website",
     images: [
       {
         url: "https://gshiki.my.id/og-main.png", 
         width: 1200,
         height: 630,
-        alt: "Shiki - Main Lobby",
+        alt: "Shiki - Main Website",
       },
     ],
     locale: "en_US",
@@ -32,7 +30,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Shiki — Link in Bio",
+    title: "Shiki — Main Website",
     description: "Developer & Creator · Building the future, one line of code at a time.",
     images: ["https://gshiki.my.id/og-main.png"], 
   },
